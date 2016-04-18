@@ -1,5 +1,5 @@
-Name:           @PACKAGE_NAME@
-Version:        @PACKAGE_VERSION@
+Name:           mentohust
+Version:        0.3.1
 Release:        1%{?dist}
 Summary:        A Ruijie and Cernet supplicant
 Summary(zh_CN.UTF-8): 锐捷和塞尔认证
@@ -10,7 +10,7 @@ URL:            http://code.google.com/p/mentohust/
 Source0:        http://mentohust.googlecode.com/files/mentohust-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:  glibc-devel libpcap-devel
+BuildRequires:  glibc-devel
 Requires:       libpcap
 
 %description
@@ -38,12 +38,10 @@ make %{?_smp_mflags}
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{name}
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f %{name}.lang
+%files
 %defattr(-,root,root,-)
 %{_bindir}/mentohust
 %config %{_sysconfdir}/mentohust.conf
